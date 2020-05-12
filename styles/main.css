@@ -1,0 +1,61 @@
+/* wengwengweng */
+
+* {
+	font-family: Monospace;
+	text-align: center;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background: black;
+}
+
+p {
+	color: white;
+}
+
+button {
+	margin-top: 12px;
+	padding: 2px 6px;
+	color: black;
+}
+
+img {
+	image-rendering: pixelated;
+	image-rendering: -moz-crisp-edges;
+	image-rendering: crisp-edges;
+}
+
+td, th {
+	color: white;
+	padding: 12px;
+}
+
+table {
+	margin: 24px auto;
+	border-collapse: collapse;
+}
+
+table, th, td {
+	border: 1px solid white;
+}
+
+#name {
+	font-size: 24px;
+}
+
+#avatar {
+	width: 320px;
+}
+
+#rank-link {
+	display: block;
+	margin-top: 9px;
+}
+
+#loading {
+	margin-top: 32px;
+}
+
