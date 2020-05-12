@@ -5,24 +5,6 @@ import { get, store, } from "./data.js"
 
 let data;
 
-async function init() {
-
-	const votes = await get();
-	const rank = Object.keys(votes)
-		.sort((a, b) => votes[b] - votes[a]);
-
-	const pokemons = await getPokemons(rank);
-
-	data = {
-		votes: votes,
-		rank: rank,
-		pokemons: pokemons,
-	};
-
-}
-
-init();
-
 const row = {
 	view(vnode) {
 		const pm = vnode.attrs.pm;
@@ -41,9 +23,25 @@ const row = {
 
 const rank = {
 
+	async oninit() {
+
+		const votes = await get();
+		const rank = Object.keys(votes)
+			.sort((a, b) => votes[b] - votes[a]);
+
+		const pokemons = await getPokemons(rank);
+
+		data = {
+			votes: votes,
+			rank: rank,
+			pokemons: pokemons,
+		};
+
+	},
+
 	view() {
 
-		if (data) {
+		return data ? (() => {
 
 			const head = [
 				m("tr", [
@@ -64,11 +62,7 @@ const rank = {
 				m("table", head.concat(body)),
 			];
 
-		} else {
-			return [
-				m("p#loading", "loading list..."),
-			];
-		}
+		})() : m("p#loading", "loading pokemons...");
 
 	}
 

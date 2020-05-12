@@ -35,23 +35,21 @@ const state = {
 	curIdx: 0,
 };
 
-async function init() {
-
-	const pokemons = await getRandomPokemons();
-
-	data = {
-		pokemons: pokemons,
-	};
-
-}
-
-init();
-
 const home = {
+
+	async oninit() {
+
+		const pokemons = await getRandomPokemons();
+
+		data = {
+			pokemons: pokemons,
+		};
+
+	},
 
 	view() {
 
-		if (data) {
+		return data ? (() => {
 
 			const pm = data.pokemons[state.curIdx];
 
@@ -77,13 +75,7 @@ const home = {
 				}, "rank"),
 			];
 
-		} else {
-
-			return [
-				m("p#loading", "loading pokemons..."),
-			];
-
-		}
+		})() : m("p#loading", "loading pokemons...");
 
 	},
 

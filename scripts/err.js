@@ -2,7 +2,9 @@
 
 const err = {
 	view() {
-		return [];
+		return [
+			m("p", "not found"),
+		];
 	}
 };
 
