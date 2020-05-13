@@ -61,13 +61,13 @@ const home = {
 				m("button", {
 					onclick: () => {
 						dope(pm.id);
-						state.curIdx += 1;
+						state.curIdx = (state.curIdx + 1) % data.pokemons.length;
 					},
 				}, "dope"),
 				m("button", {
 					onclick: () => {
 						lame(pm.id);
-						state.curIdx += 1;
+						state.curIdx = (state.curIdx + 1) % data.pokemons.length;
 					},
 				}, "lame"),
 				m("a#rank-link", {
